@@ -1,0 +1,13 @@
+<ion-footer>
+  <ion-button (click)="goCarrito()" color="primary" expand="block">
+    <ion-icon name="cart" slot="start"></ion-icon>
+    <ion-row>
+      <ion-col class="text-left" size="6">
+        <strong>Mi Pedido</strong>
+      </ion-col>
+      <ion-col class="text-right" size="6">
+        <span class="badge">{{ storageServ.getItemsCarrito() }}</span>
+      </ion-col>
+    </ion-row>
+  </ion-button>
+</ion-footer>

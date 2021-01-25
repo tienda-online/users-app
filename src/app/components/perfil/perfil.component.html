@@ -1,0 +1,40 @@
+<app-detail-header title="Registro" isModal="true"></app-detail-header>
+<ion-content>
+    <form #form="ngForm" (ngSubmit)="editar()">
+        <ion-grid class="pl-20 pr-20">
+            <ion-row>
+                <ion-col size="12" class="mt-10 mb-20 text-center">
+                    <ion-label>Puedes editar los</ion-label>
+                    <ion-label color="primary"> siguientes campos</ion-label>
+                    <ion-label> cuando tu prefieras</ion-label>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-item class="mb-15" (click)="presentarOpciones()">
+                        <ion-text *ngIf="usuario.imagen === ''">Foto de perfil</ion-text>
+                        <ion-label *ngIf="usuario.imagen !== ''" color="success"><strong>¡Listo!</strong></ion-label>
+                        <ion-avatar slot="start">
+                            <img *ngIf="usuario.imagen !== ''" src="data:image/png;base64,{{usuario.imagen}}">
+                            <img *ngIf="usuario.imagen === ''" [src]="profilePhoto">
+                        </ion-avatar>
+                    </ion-item>
+                    <ion-item class="input-text mb-15">
+                      <ion-input disabled [(ngModel)]="correo" name="correo" placeholder="Correo eléctronico"
+                          autocapitalize="off" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                          required></ion-input>
+                    </ion-item>
+                    <ion-item class="input-text mb-15">
+                        <ion-input type="text" [(ngModel)]="usuario.nombre" name="nombre" autocapitalize="on"
+                            placeholder="Nombres" required></ion-input>
+                    </ion-item>
+                    <ion-item class="input-text mb-15">
+                        <ion-input type="text" [(ngModel)]="usuario.apellido" name="apellido" autocapitalize="on"
+                            placeholder="Apellidos" required></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="12" class="mt-10">
+                    <ion-button type="submit" [disabled]="!form.valid" color="primary" expand="block" strong> Actualizar</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>

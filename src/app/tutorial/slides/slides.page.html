@@ -1,0 +1,35 @@
+<ion-content fullscreen class="ion-padding" no-bounce has-bouncing="false" forceOverscroll="false">
+  <ion-grid>
+    <ion-row>
+      <ion-slides #tutorial>
+        <ion-slide>
+          <div class="slide mt-30">
+            <ion-label class="title-text boo-title" color="primary">COMPARTE TU UBICACIÓN </ion-label> <ion-label class="title-text boo-title custom-color">Y REVISA LOS LOCALES MÁS CERCANOS</ion-label>
+            <img class="img-adjust mb-30" src="../../../assets/images/slide1.svg"/>
+            <img class="img-adjust mb-10" src="../../../assets/images/linea1.svg"/>
+            <ion-button fill="outline" color="primary" expand="block" (click)="tutorial.slideNext()" shape="round" >CONTINUAR</ion-button>
+          </div>
+        </ion-slide>
+    
+        <ion-slide>
+          <div class="slide mt-30">
+            <ion-label class="title-text boo-title custom-color" >ELIJE LO QUE QUIERES COMPRAR </ion-label> <ion-label class="title-text boo-title" color="primary">Y ORDENA DESDE EL APP FÁCILMENTE</ion-label>
+            <img class="img-adjust mt-30 mb-30" src="../../../assets/images/slide2.svg"/>
+            <img class="img-adjust mb-10" src="../../../assets/images/linea2.svg"/>
+            <ion-button fill="outline" color="primary" expand="block" (click)="tutorial.slideNext()" shape="round" >CONTINUAR</ion-button>
+          </div>
+        </ion-slide>
+    
+        <ion-slide>
+          <div class="slide mt-30">
+            <ion-label class="title-text boo-title" color="primary">RECIBE TUS COMPRAS </ion-label> <ion-label class="title-text boo-title custom-color">DE UNA FORMA SEGURA</ion-label>
+            <img class="img-adjust mb-30" src="../../../assets/images/slide3.svg"/>
+            <img class="img-adjust mb-10" src="../../../assets/images/linea3.svg"/>
+            <ion-button fill="outline" color="primary" expand="block" (click)="saveTutorial()" shape="round">COMENZAR</ion-button>
+          </div>
+        </ion-slide>
+      </ion-slides>    
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

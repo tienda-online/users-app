@@ -1,0 +1,10 @@
+<ion-list lines="none">
+  <ion-item *ngFor="let track of orden.tracking; let i = index" class="mt-10 mb-10">
+      <img *ngIf="i === 0" class="img-producto mr-10" src="./assets/images/trackon.png" />
+      <img *ngIf="i !== 0" class="img-producto mr-10" src="./assets/images/trackoff.png" />
+      <ion-label>
+        <ion-label class="ion-text-wrap title">{{ track.mensaje }}</ion-label>
+        <p class="subtitle-text">{{ track.fecha_creacion | amTimeAgo }}</p>
+      </ion-label>
+    </ion-item>
+</ion-list>

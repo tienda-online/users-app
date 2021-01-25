@@ -1,0 +1,19 @@
+ion-item-divider,
+ion-list-header {
+    padding: 0px 0px 0px 0px
+}
+
+.custom-padding {
+    padding: 0px 10px 0px 10px
+}
+
+.top-padding {
+    margin-top: 20px
+}
+
+.text-border {
+    border: 0.5px solid var(--ion-color-medium);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}

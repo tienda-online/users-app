@@ -1,0 +1,28 @@
+<ion-content>
+  <app-basic-header></app-basic-header>
+  <ion-toolbar>
+    <ion-searchbar mode="md" color="search" placeholder="Buscar..." animated debounce="400"
+      (ionChange)="buscar($event)"></ion-searchbar>
+  </ion-toolbar>
+  <ion-grid *ngIf="buscando">
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-spinner name="dots"></ion-spinner>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div *ngIf="afiliados.length > 0 && !buscando">
+    <app-afiliados-cards [afiliados]='afiliados'></app-afiliados-cards>
+  </div>
+  <ion-row *ngIf="afiliados.length <= 0 && !buscando" class="ion-justify-content-center">
+    <ion-col *ngIf="storageServ.usuario && storageServ.ordenes > 0" size="12">
+      <ion-button color="success" expand="block" shape="round" (click)="goOrdenesActiva()">
+        <ion-icon name="cart" slot="start"></ion-icon>
+        <ion-label> Usted posee {{ storageServ.ordenes }} ordenes activas</ion-label>
+      </ion-button>
+    </ion-col>
+    <ion-col *ngFor="let categoria of categorias" size="12" [routerLink]="['/afiliados', categoria.id_categoria]">
+      <img [src]="categoria.imagen">
+    </ion-col>
+  </ion-row>
+</ion-content>

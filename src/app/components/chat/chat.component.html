@@ -1,0 +1,35 @@
+<app-detail-header title="Chat" isModal="true" chatHeader="true" [repartidor]="repartidor"></app-detail-header>
+<ion-content
+  ion-content>
+<ion-grid>
+  <ion-row *ngFor="let message of messages">
+    <ion-col size="9" *ngIf="message.rol === 'Repartidor'" class="message other">
+      <span>{{ message.mensaje }}</span>
+      <div class="time text-right"><br>
+        {{ message.fecha_creacion | amTimeAgo }}
+      </div>
+    </ion-col>
+
+    <ion-col offset="3" size="9" *ngIf="message.rol !== 'Repartidor'" class="message mine">
+      <span>{{ message.mensaje }}</span>
+      <div class="time text-right"><br>
+        {{ message.fecha_creacion | amTimeAgo }}
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
+<ion-footer>
+<ion-toolbar color="light">
+  <ion-row>
+    <ion-col size="10">
+      <textarea autosize maxRows="3" [(ngModel)]="newMsg.mensaje" class="message-input"></textarea>
+    </ion-col>
+    <ion-col size="2">
+      <ion-button fill="clear" expand="block" color="primary" [disabled]="newMsg.mensaje === '' || loading" class="msg-btn" (click)="sendMessage()">
+        <ion-icon name="send" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-toolbar>
+</ion-footer>

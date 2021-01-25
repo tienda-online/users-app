@@ -1,0 +1,21 @@
+ion-label {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.message-input {
+    width: 100%;
+    border: 1px solid var (--ion-color-medium);
+    border-radius: 10px;
+    background-color: #fff;
+    resize: none;
+    padding: 10px;
+}
+
+.input-custom {
+    --border-color: transparent!important;
+    --highlight-height: 0;
+    border: 1px solid #dedede;
+    border-radius: 8px;
+    height: 100px;
+}

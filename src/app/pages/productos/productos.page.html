@@ -1,0 +1,51 @@
+<app-detail-header [title]="sucursalName" removeCart="true"></app-detail-header>
+<ion-content>
+    <app-afiliado-detail [afiliado]="afiliado"></app-afiliado-detail>
+    <ion-segment (ionChange)="cambioCategoria($event)">
+        <ion-segment-button *ngFor="let categoria of categorias" [ngClass]="segment.value === categoria.id_afiliado_categoria ? 'segment-button-checked': ''" mode="md" [value]="categoria.id_afiliado_categoria">
+            <ion-label class="ion-text-capitalize">{{ categoria.nombre }}</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+    <ion-segment *ngIf="subcategorias.length > 0" class="subcategorias-segmented" (ionChange)="cambioSubcategoria($event)">
+        <ion-segment-button class="subcategorias-seg-btn" *ngFor="let subcategoria of subcategorias" [ngClass]="subcategoriaSeleccion == subcategoria.id_subcategoria && 'subcategorias-selected'" mode="md" [value]="subcategoria.id_subcategoria">
+            <ion-label color="light" class="ion-text-capitalize">{{ subcategoria.nombre }}</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+    <ion-row class="ml-10 mr-10">
+        <ion-col class="pl-10 pr-10" *ngFor="let producto of productos; let i = index;" size="12">
+            <ion-row class="ion-align-items-center">
+                <ion-col size="6">
+                    <img class="img-producto" [src]="producto.info.imagen" />
+                </ion-col>
+                <ion-col size="6">
+                    <ion-label class="title-producto">{{ producto.info.producto }}</ion-label>
+                    <ion-row>
+                        <ion-col class="no-padding" size="12">
+                            <div *ngIf="producto.info.descuento.valor === 0"><ion-label class="price-producto" color="tertiary">{{ producto.info.precio | currency:'USD' }}</ion-label></div>
+                            <div *ngIf="producto.info.descuento.valor > 0">
+                                <ion-label class="discount-producto mr-5">{{ producto.info.precio | currency:'USD' }}</ion-label>
+                                <ion-label *ngIf="producto.info.descuento.is_porcentaje == '0'" class="price-producto" color="danger">{{ producto.info.precio - producto.info.descuento.valor | currency:'USD' }}</ion-label>
+                                <ion-label *ngIf="producto.info.descuento.is_porcentaje != '0'" class="price-producto" color="danger">{{ producto.info.precio - (producto.info.precio * (producto.info.descuento.valor / 100)) | currency:'USD' }}</ion-label>
+                            </div>
+                        </ion-col>
+                        <ion-col class="no-padding" size="12">
+                            <ion-item-group *ngIf="producto.info.is_plato === '0'" mode="md">
+                                <ion-button size="small" mode="md" [disabled]="producto.cantidad === 0" value="minus" (click)="operation(false, i)">
+                                    <ion-icon name="remove"></ion-icon>
+                                </ion-button>
+                                <ion-button size="small" color="light" mode="md" disabled>
+                                    <ion-label><strong>{{ producto.cantidad }}</strong></ion-label>
+                                </ion-button>
+                                <ion-button size="small" mode="md" value="plus" (click)="operation(true, i)">
+                                    <ion-icon name="add"></ion-icon>
+                                </ion-button>
+                            </ion-item-group>
+                            <ion-button [routerLink]="['/productos-detalle', producto.info.id_producto]" *ngIf="producto.info.is_plato === '1'" size="small" color="primary"><ion-icon name="restaurant"></ion-icon></ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+        </ion-col>
+    </ion-row>
+</ion-content>
+<app-cart-footer></app-cart-footer>

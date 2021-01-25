@@ -1,0 +1,107 @@
+<app-detail-header title="Carrito de Compras" isModal="true"></app-detail-header>
+<ion-content color="white">
+    <ion-list lines="none">
+        <ion-item>
+            <ion-label>
+              <h2><strong>{{ storageServ.afiliado.nombre }}</strong></h2>
+              <p class="subtitle-text">{{ storageServ.afiliado.referencia }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h2><strong>{{ storageServ.ubicacion.direccion }}</strong></h2>
+              <p class="subtitle-text">Dirección de Entrega</p>
+            </ion-label>
+          </ion-item>
+    </ion-list>
+    <div class="separator"></div>
+    <ion-list lines="none">
+        <ion-item class="mb-10" *ngFor="let carrito of items; let i = index;">
+            <ion-row class="ion-align-items-center">
+                <ion-col size="2">
+                    <img class="img-producto" [src]="carrito.info.imagen" />
+                </ion-col>
+                <ion-col class="text-left" size="6">
+                    <ion-label class="ion-text-wrap">
+                        <h4 class="text-dark"><strong>{{ carrito.info.producto }}</strong></h4>
+                        <div class="subtitle-text" *ngIf="carrito.info.is_plato === '1'">
+                            <div *ngIf="carrito.preferencias.length > 0"><span *ngFor="let preferencia of carrito.preferencias">
+                                <strong>{{ preferencia.nombre }}: </strong> {{ preferencia.seleccion.nombre }} <span
+                                    *ngIf="preferencia.seleccion.precio > 0">(+{{ preferencia.seleccion.precio | currency:'USD' }})</span>
+                            </span></div>
+                            <ion-label class="ion-text-wrap" *ngIf="carrito.extras.length > 0">
+                                <strong>Extras: </strong> <span *ngFor="let extra of carrito.extras">{{ extra.nombre }}
+                                    (+{{ extra.precio | currency:'USD' }}) </span>
+                            </ion-label>
+                        </div>
+                        <p class="subtitle-text" *ngIf="carrito.info.is_plato === '0'">{{ carrito.info.descripcion }}</p>
+                    </ion-label>
+                </ion-col>
+                <ion-col class="text-right" size="4">
+                    <ion-label>
+                        <h3>Cantidad: <strong>{{ carrito.cantidad }}</strong></h3>
+                    </ion-label>
+                    <ion-label color="primary">
+                        <h2 class="text-medium"><strong>{{ carrito.total * carrito.cantidad | currency:'USD' }}</strong></h2>
+                    </ion-label>
+                    <ion-button color="primary" fill="clear" (click)="deleteProducto(i)">
+                        <ion-icon color="danger" name="trash"></ion-icon>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+    </ion-list>
+    <div class="separator"></div>
+    <ion-grid>
+        <ion-row class="custom-padding">
+            <ion-col size="6">
+                Items
+            </ion-col>
+            <ion-col class="text-right" size="6">
+                <ion-label>{{ items.length }}</ion-label>
+            </ion-col>
+            <ion-col size="6">
+                Descuento
+            </ion-col>
+            <ion-col class="text-right" size="6">
+                <ion-label color="danger">-{{ 0 | currency:'USD' }}</ion-label>
+            </ion-col>
+            <ion-col size="6">
+                Subtotal
+            </ion-col>
+            <ion-col class="text-right" size="6">
+                <ion-label>{{ total | currency:'USD' }}</ion-label>
+            </ion-col>
+            <ion-col size="6">
+                Costo de Envío
+            </ion-col>
+            <ion-col class="text-right" size="6">
+                <ion-label>{{ storageServ.afiliado.costo_envio | currency:'USD' }}</ion-label>
+            </ion-col>
+            <ion-col size="6">
+                <strong class="big-size">Total</strong>
+            </ion-col>
+            <ion-col class="text-right" size="6">
+                <ion-label color="primary"><strong class="big-size">{{ total | currency:'USD' }}</strong></ion-label>
+            </ion-col>
+        </ion-row>
+        <div class="separator"></div>
+        <ion-row>
+            <ion-col size="12">
+                <ion-button color="primary" expand="block">
+                    <ion-icon name="card" slot="start"></ion-icon>
+                    <ion-row>
+                      <ion-col class="text-right" size="12">
+                        <ion-label color="light"><strong>Seleccionar método de pago</strong></ion-label>
+                      </ion-col>
+                    </ion-row>
+                  </ion-button>           
+                 </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+<ion-footer>
+    <ion-button color="primary" expand="block" (click)="checkout()">
+          <strong>Ordenar</strong>
+    </ion-button>
+  </ion-footer>

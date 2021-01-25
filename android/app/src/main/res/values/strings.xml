@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Izi</string>
+    <string name="title_activity_main">Izi</string>
+    <string name="package_name">com.izi.app</string>
+    <string name="custom_url_scheme">com.izi.app</string>
+</resources>

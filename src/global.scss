@@ -1,0 +1,317 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import "animate.css/animate.css";
+
+.m-5 {
+    margin: 5px;
+}
+
+.mt-5 {
+    margin-top: 5px;
+}
+
+.mb-5 {
+    margin-bottom: 5px;
+}
+
+.mr-5 {
+    margin-right: 5px;
+}
+
+.ml-5 {
+    margin-left: 5px;
+}
+
+.m-10 {
+    margin: 10px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.m-15 {
+    margin: 15px;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.mr-15 {
+    margin-right: 15px;
+}
+
+.ml-15 {
+    margin-left: 15px;
+}
+
+.m-20 {
+    margin: 20px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mr-20 {
+    margin-right: 20px;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
+.m-30 {
+    margin: 30px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.mr-30 {
+    margin-right: 30px;
+}
+
+.ml-30 {
+    margin-left: 30px;
+}
+
+.p-5 {
+    padding: 5px;
+}
+
+.pt-5 {
+    padding-top: 5px;
+}
+
+.pb-5 {
+    padding-bottom: 5px;
+}
+
+.pr-5 {
+    padding-right: 5px;
+}
+
+.pl-5 {
+    padding-left: 5px;
+}
+
+.p-10 {
+    padding: 10px;
+}
+
+.pt-10 {
+    padding-top: 10px;
+}
+
+.pb-10 {
+    padding-bottom: 10px;
+}
+
+.pr-10 {
+    padding-right: 10px;
+}
+
+.pl-10 {
+    padding-left: 10px;
+}
+
+.p-15 {
+    padding: 15px;
+}
+
+.pt-15 {
+    margin-top: 15px;
+}
+
+.pb-15 {
+    margin-bottom: 15px;
+}
+
+.pr-15 {
+    padding-right: 15px;
+}
+
+.pl-15 {
+    padding-left: 15px;
+}
+
+.p-20 {
+    padding: 20px;
+}
+
+.pt-20 {
+    padding-top: 20px;
+}
+
+.pb-20 {
+    padding-bottom: 20px;
+}
+
+.pr-20 {
+    padding-right: 20px;
+}
+
+.pl-20 {
+    padding-left: 20px;
+}
+
+.text-center {
+    display: block;
+    text-align: center;
+}
+
+.text-left {
+    display: block;
+    text-align: left;
+}
+
+.text-right {
+    display: block;
+    text-align: right;
+}
+
+.boo-title {
+    font-size: 30px;
+}
+
+.boo-subtitle {
+    font-size: 25px;
+}
+
+.input-text {
+    --border-color: transparent!important;
+    --highlight-height: 0;
+    border: 1px solid #dedede;
+    border-radius: 8px;
+}
+
+.ion-color.sc-ion-searchbar-md-h .searchbar-input.sc-ion-searchbar-md {
+    border-radius: 20px;
+    background: #fff;
+}
+
+ion-segment {
+    background: #fff;
+}
+
+.ion-btn-no-selected {
+    border-bottom: 1px #6b6b6b solid;
+}
+
+.subcategorias-segmented {
+    border-radius: 0px;
+}
+
+.subcategorias-seg-btn{
+    margin-bottom: 10px;
+    background: var(--ion-color-primary);
+    font-size: 12px;
+}
+
+.subcategorias-selected::before {
+    content: "";
+	width: 0px;
+	height: 0px;
+	border: 0.8em solid transparent;
+    position: absolute;
+	left: 45%;
+	bottom: -20px;
+	border-top: 10px solid var(--ion-color-primary);
+}
+
+.title-producto {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.title-detail-producto {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.price-producto {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.discount-producto {
+    color: gray;
+    text-decoration: line-through;
+}
+
+body{
+    background: #FEFFFE;
+}
+
+.badge {
+    border-radius: 10px;
+    background-color: #8DDEE1;
+    padding: 5px 5px 5px 5px;
+}
+
+.modal-fullscreen {
+    .modal-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.separator {
+    margin: 15px 10px 15px 10px;
+    border-bottom: 1px solid rgba(var(--ion-color-medium-rgb), 0.7);
+}

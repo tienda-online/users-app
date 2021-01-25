@@ -1,0 +1,10 @@
+<ion-list lines="full">
+  <ion-item *ngFor="let afiliado of afiliados" detail="true" (click)="goProductos(afiliado)">
+    <ion-img [src]="afiliado.imagen_presentacion" slot="start"></ion-img>
+    <ion-label>
+      <h2>{{ afiliado.nombre_afiliado }}</h2>
+      <p>{{ afiliado.descripcion_afiliado }}</p>
+      <ion-badge class="mr-5 mt-5" color="primary"><ion-icon name="pin"></ion-icon> {{ afiliado.referencia }}</ion-badge><ion-badge class="mr-5 mt-5" color="primary"><ion-icon name="time"></ion-icon> {{ afiliado.hora_entrada }} - {{ afiliado.hora_salida }}</ion-badge>
+    </ion-label>
+  </ion-item>
+</ion-list>

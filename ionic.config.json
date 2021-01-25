@@ -1,0 +1,7 @@
+{
+  "name": "izi-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

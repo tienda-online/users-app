@@ -1,0 +1,19 @@
+<app-detail-header [title]="(url !== 'ordenes') ? 'Ordenes Activas' : 'Historial de Ordenes'" isModal="true"></app-detail-header>
+<ion-content color="light">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content pullingIcon="chevron-down-circle-outline"></ion-refresher-content>
+  </ion-refresher>
+  <app-no-data *ngIf="ordenes.length === 0 && !loading" title="Usted no registra pedidos realizados"></app-no-data>
+  <ion-list *ngIf="ordenes.length > 0" lines="full" type="ios">
+      <ion-item *ngFor="let orden of ordenes" detail="true" (click)="goOrden(orden.id_orden)">
+          <ion-avatar slot="start">
+              <img src="./assets/images/header-logo.png">
+          </ion-avatar>
+          <ion-label class="ion-text-wrap">
+              <h2 class="text-primary"><strong>Orden #{{ orden.id_orden }}</strong></h2>
+              <ion-badge class="mt-5" [color]="estados[orden.estado].color">{{ estados[orden.estado].texto }}</ion-badge>
+              <h4 class="text-medium mt-5">Última Act: {{ orden.fecha_creacion | amTimeAgo }}</h4>
+          </ion-label>
+      </ion-item>
+  </ion-list>
+</ion-content>

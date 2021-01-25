@@ -1,0 +1,12 @@
+<ion-row *ngIf="storageServ.ubicacion" class="ion-align-items-center pt-15">
+  <ion-col size="9">
+    <ion-button color="primary" expand="block" shape="round" (click)="goUbicacion()">
+          <ion-icon name="navigate" slot="start"></ion-icon><ion-label> {{ storageServ.ubicacion.direccion }}</ion-label>
+    </ion-button>
+  </ion-col>
+  <ion-col class="text-center" size="3">
+    <ion-button color="light" (click)="goMenu()">
+      <ion-icon slot="icon-only" name="menu" color="primary"></ion-icon>
+    </ion-button>
+  </ion-col>
+</ion-row>

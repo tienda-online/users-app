@@ -1,0 +1,24 @@
+<app-detail-header title="Orden #{{idOrden}}" isModal="true"></app-detail-header>
+<ion-content *ngIf="orden">
+  <ion-refresher *ngIf="estados[orden.estado].refresh" slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="chevron-down-circle-outline"></ion-refresher-content>
+  </ion-refresher>
+  <app-pedido-resumen *ngIf="orden && submenu === 1" [orden]="orden"></app-pedido-resumen>
+  <app-pedido-ubicacion *ngIf="orden && submenu === 2" [orden]="orden"></app-pedido-ubicacion>
+  <app-pedido-tracking *ngIf="orden && submenu === 3" [orden]="orden"></app-pedido-tracking>
+</ion-content>
+<ion-footer *ngIf="orden">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+        <ion-button color="primary" [fill]="(submenu === 1) ? 'outline' : 'solid'" (click)="changeSubmenu(1)" expand="block">Resumen</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button color="primary" [fill]="(submenu === 3) ? 'outline' : 'solid'" (click)="changeSubmenu(3)" expand="block">Estado</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button [disabled]="!estados[orden.estado].active" color="primary" [fill]="(submenu === 2) ? 'outline' : 'solid'" (click)="changeSubmenu(2)" expand="block">Ubicación</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

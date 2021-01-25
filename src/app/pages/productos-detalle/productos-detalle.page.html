@@ -1,0 +1,54 @@
+<app-detail-header [title]="sucursalName"></app-detail-header>
+<ion-content>
+    <div *ngIf="producto">
+        <img [src]="producto.imagen" />
+        <ion-grid>
+            <ion-row>
+                <ion-col class="text-left" size="8">
+                    <ion-label class="title-detail-producto">{{ producto.producto }}</ion-label>
+                </ion-col>
+                <ion-col class="text-right" size="4">
+                    <div *ngIf="producto.descuento.valor === 0">
+                        <ion-label class="price-producto" color="tertiary">{{ producto.precio | currency:'USD' }}
+                        </ion-label>
+                    </div>
+                    <div *ngIf="producto.descuento.valor > 0">
+                        <ion-label class="discount-producto mr-5">{{ producto.precio | currency:'USD' }}</ion-label>
+                        <ion-label *ngIf="producto.descuento.is_porcentaje == '0'" class="price-producto"
+                            color="danger">{{ producto.precio - producto.descuento.valor | currency:'USD' }}</ion-label>
+                        <ion-label *ngIf="producto.descuento.is_porcentaje != '0'" class="price-producto"
+                            color="danger">
+                            {{ producto.precio - (producto.precio * (producto.descuento.valor / 100)) | currency:'USD' }}
+                        </ion-label>
+                    </div>
+                </ion-col>
+                <ion-col size="12">
+                    {{ producto.descripcion }}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-radio-group mode="md" *ngFor="let preferencia of producto.preferencias;" allow-empty-selection value="data">
+            <ion-list-header>
+                <h3 class="custom-padding"><strong>{{ preferencia.nombre }}</strong></h3>
+            </ion-list-header>
+            <ion-item lines="full" *ngFor="let detalle of preferencia.detalles" (click)="manageDetalle(preferencia, detalle)">
+                <ion-label>{{ detalle.nombre }} <span
+                        *ngIf="preferencia.precio > 0">(+{{ preferencia.precio | currency: 'USD' }})</span> </ion-label>
+                <ion-radio slot="end" color="primary" [value]="preferencia.id_preferencia_detalle"></ion-radio>
+            </ion-item>
+        </ion-radio-group>
+        <div *ngIf="producto.extras.length > 0" class="pl-10 pr-10">
+            <h3><strong>Extras</strong></h3>
+            <ion-button *ngFor="let extra of producto.extras" [fill]="(!extrasSeleccion.includes(extra)) ? 'outline' : 'solid'" size="small" color="primary" (click)="manageExtra(extra)">{{ extra.nombre }}</ion-button>
+        </div>
+        <div class="pl-10 pr-10">
+            <h3><strong>Nota al cocinero</strong></h3>
+            <ion-textarea class="text-border pl-5 pr-5" rows="3" cols="20"
+                placeholder="Escriba detalles adicionales para su orden..."
+                (input)="notaAdicional = $event.target.value"></ion-textarea>
+        </div>
+        <div class="mt-10" size="12">
+            <ion-button expand="full" (click)="addCarrito()" strong>Agregar al carrito</ion-button>
+        </div>
+    </div>
+</ion-content>

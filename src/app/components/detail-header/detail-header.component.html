@@ -1,0 +1,25 @@
+<ion-header no-border>
+  <ion-toolbar color="primary">
+      <ion-buttons *ngIf="!isModal" slot="start">
+          <ion-back-button *ngIf="!removeCart" defaultHref="/home" text="Atrás"></ion-back-button>
+          <ion-button *ngIf="removeCart" (click)="backAction()">
+            <ion-icon name="arrow-undo"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+      <ion-title class="ion-text-capitalize">{{ title }}</ion-title>
+      <ion-buttons *ngIf="isModal" slot="end">
+        <ion-button (click)="close()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-list lines="none" *ngIf="chatHeader && repartidor">
+    <ion-item class="mt-5 mb-5">
+        <ion-avatar class="mr-20"><img [src]="repartidor.imagen"></ion-avatar>
+        <ion-label>
+          <h2><strong>{{ repartidor.nombre }} {{ repartidor.apellido }}</strong></h2>
+          <p class="subtitle-text">Repartidor</p>
+        </ion-label>
+      </ion-item>
+  </ion-list>
+</ion-header>

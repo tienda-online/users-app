@@ -1,0 +1,4 @@
+<ion-grid *ngIf="afiliado" style="padding: 30px 15px 30px 15px;" [style.background]="'url('+afiliado.imagen_background+')'" [style.backgroundSize]="'cover'"> 
+  <ion-label color="light">{{ afiliado.descripcion }}</ion-label><br />
+  <ion-badge class="mr-5 mt-5" color="primary"><ion-icon name="pin"></ion-icon> {{ afiliado.referencia }}</ion-badge><ion-badge class="mr-5 mt-5" color="primary"><ion-icon name="time"></ion-icon> {{ afiliado.hora_entrada }} - {{ afiliado.hora_salida }}</ion-badge>
+</ion-grid>
